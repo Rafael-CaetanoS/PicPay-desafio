@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
-@Table(name = "usuario")
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
@@ -41,4 +41,14 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoUsuario tipoUsuario;
+
+    public Usuario(UsuarioDTO usuarioDTO){
+        this.primeiroNome = usuarioDTO.primeiroNomer();
+        this.ultimoNome = usuarioDTO.segundoNome();
+        this.cpf = usuarioDTO.cpf();
+        this.email = usuarioDTO.email();
+        this.senha = usuarioDTO.senha();
+        this.caixa = usuarioDTO.caixa();
+        this.tipoUsuario = usuarioDTO.tipoUsuario();
+    }
 }
